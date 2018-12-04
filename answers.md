@@ -11,4 +11,4 @@ Questions:
 Exercisies:
 
 1. Explored arch.jpg picture
-2. 
+2. added and explored BlackHole.jpg
