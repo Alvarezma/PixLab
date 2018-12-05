@@ -17,6 +17,44 @@ public class PictureTester
     beach.explore();
   }
 
+  
+  /** Method to test mirrorVertical */
+  public static void testMirrorVertical()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorVertical();
+    caterpillar.explore();
+  }
+
+  
+  
+  /** Method to test mirrorTemple */
+  public static void testMirrorTemple()
+  {
+    Picture temple = new Picture("temple.jpg");
+    temple.explore();
+    temple.mirrorTemple();
+    temple.explore();
+  }
+  
+  /** Method to test the collage method */
+  public static void testCollage()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.createCollage();
+    canvas.explore();
+  }
+  
+  /** Method to test edgeDetection */
+  public static void testEdgeDetection()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.edgeDetection(10);
+    swan.explore();
+  }
+
+  //  MY WORK
   public static void testKeepOnlyBlue()
   {
     Picture beach = new Picture("beach.jpg");
@@ -48,41 +86,24 @@ public class PictureTester
     water.fixUnderwater();
     water.explore();
   }
-  
-  /** Method to test mirrorVertical */
-  public static void testMirrorVertical()
+
+  public static void testMirrorVerticalRightToLeft()
   {
     Picture caterpillar = new Picture("caterpillar.jpg");
     caterpillar.explore();
-    caterpillar.mirrorVertical();
+    caterpillar.mirrorVerticalRightToLeft();
     caterpillar.explore();
   }
-  
-  /** Method to test mirrorTemple */
-  public static void testMirrorTemple()
+
+  public static void testMirrorHorizontal()
   {
-    Picture temple = new Picture("temple.jpg");
-    temple.explore();
-    temple.mirrorTemple();
-    temple.explore();
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorHorizontal();
+    caterpillar.explore();
   }
-  
-  /** Method to test the collage method */
-  public static void testCollage()
-  {
-    Picture canvas = new Picture("640x480.jpg");
-    canvas.createCollage();
-    canvas.explore();
-  }
-  
-  /** Method to test edgeDetection */
-  public static void testEdgeDetection()
-  {
-    Picture swan = new Picture("swan.jpg");
-    swan.edgeDetection(10);
-    swan.explore();
-  }
-  
+
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -96,8 +117,10 @@ public class PictureTester
     //testKeepOnlyGreen();
     // testNegate();
     // testGrayscale();
-    testFixUnderwater();
-    //testMirrorVertical();
+    // testFixUnderwater();
+    // testMirrorVertical();
+    // testMirrorVerticalRightToLeft();
+    testMirrorHorizontal();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
