@@ -54,7 +54,7 @@ public class PictureTester
     swan.explore();
   }
 
-  //  MY WORK
+  //  MY WORK for the PixLab Exercises
   public static void testKeepOnlyBlue()
   {
     Picture beach = new Picture("beach.jpg");
@@ -103,6 +103,22 @@ public class PictureTester
     caterpillar.explore();
   }
 
+  public static void testMirrorHorizontalBotToTop()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorHorizontalBotToTop();
+    caterpillar.explore();
+  }
+
+  public static void testMirrorDiagonal()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.mirrorDiagonal();
+    beach.explore();
+  }
+
 
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -120,11 +136,12 @@ public class PictureTester
     // testFixUnderwater();
     // testMirrorVertical();
     // testMirrorVerticalRightToLeft();
-    testMirrorHorizontal();
+    // testMirrorHorizontal();
+    // testMirrorHorizontalBotToTop();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
-    //testMirrorDiagonal();
+    testMirrorDiagonal();
     // testCollage();
     //testCopy();
     //testEdgeDetection();
