@@ -362,4 +362,37 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+
+	public void copy(Picture fromPic, int fromStartRow, int fromEndRow, int fromStartCol,
+					int fromEndCol, int toStartRow, int toStartCol) {
+		Pixel fromPixel = null;
+		Pixel toPixel = null;
+		Pixel[][] toPixels = this.getPixels2D();
+		Pixel[][] fromPixels = fromPic.getPixels2D();
+		for (int fromRow = fromStartRow, toRow = toStartRow; fromRow < fromEndRow
+				&& toRow < toPixels.length; fromRow++, toRow++) {
+			for (int fromCol = fromStartCol, toCol = toStartCol; fromCol < fromEndCol
+					&& toCol < toPixels[0].length; fromCol++, toCol++) {
+				fromPixel = fromPixels[fromRow][fromCol];
+				toPixel = toPixels[toRow][toCol];
+				toPixel.setColor(fromPixel.getColor());
+			}
+		}
+	}
+
+	public void myCollage() {
+		Picture flower1 = new Picture("flower1.jpg");
+		Picture flowerNegate = new Picture(flower1);
+		flowerNegate.negate();
+		Picture flowerOnlyBlue = new Picture(flower1);
+		flowerOnlyBlue.keepOnlyBlue();
+		Picture flowerGrayscale = new Picture(flower1);
+		flowerGrayscale.grayscale();
+		this.copy(flower1, 0, 0);
+		this.copy(flowerNegate, 100, 0);
+		this.copy(flowerOnlyBlue, 200, 0);
+		this.copy(flowerGrayscale, 300, 0);
+		this.mirrorVertical();
+		this.write("collage.jpg");
+	}
 } // this } is the end of class Picture, put all new methods before this
