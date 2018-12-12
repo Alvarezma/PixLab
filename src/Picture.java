@@ -178,30 +178,7 @@ public class Picture extends SimplePicture {
 		this.mirrorVertical();
 		this.write("collage.jpg");
 	}
-
-	/**
-	 * Method to show large changes in color
-	 * 
-	 * @param edgeDist
-	 *            the distance for finding edges
-	 */
-	public void edgeDetection(int edgeDist) {
-		Pixel leftPixel = null;
-		Pixel rightPixel = null;
-		Pixel[][] pixels = this.getPixels2D();
-		Color rightColor = null;
-		for (int row = 0; row < pixels.length; row++) {
-			for (int col = 0; col < pixels[0].length - 1; col++) {
-				leftPixel = pixels[row][col];
-				rightPixel = pixels[row][col + 1];
-				rightColor = rightPixel.getColor();
-				if (leftPixel.colorDistance(rightColor) > edgeDist)
-					leftPixel.setColor(Color.BLACK);
-				else
-					leftPixel.setColor(Color.WHITE);
-			}
-		}
-	}
+	
 
 	/*
 	 * Main method for testing - each class in Java can have a main method
@@ -394,5 +371,58 @@ public class Picture extends SimplePicture {
 		this.copy(flowerGrayscale, 300, 0);
 		this.mirrorVertical();
 		this.write("collage.jpg");
+	}
+
+	public void edgeDetection(int edgeDist) {
+		Pixel currentPixel = null;
+		Pixel nextPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		Color nextColor = null;
+		for (int row = 0; row < pixels.length; row++) {
+			for (int col = 0; col < pixels[0].length - 1; col++) {
+				currentPixel = pixels[row][col];
+				nextPixel = pixels[row][col + 1];
+				nextColor = nextPixel.getColor();
+				if (currentPixel.colorDistance(nextColor) > edgeDist)
+					currentPixel.setColor(Color.BLACK);
+				else
+					currentPixel.setColor(Color.WHITE);
+			}
+		}
+		for (int col = 0; col < pixels[0].length; col++) {
+			for (int row = 0; row < pixels.length - 1; row++) {
+				currentPixel = pixels[row][col];
+				nextPixel = pixels[row + 1][col];
+				nextColor = nextPixel.getColor();
+				if (currentPixel.colorDistance(nextColor) > edgeDist)
+					currentPixel.setColor(Color.BLACK);
+				else
+					currentPixel.setColor(Color.WHITE);
+			}
+		}
+	}
+
+	public void edgeDetection2(int edgeDist) {
+		Pixel currentPixel = null;
+		Pixel rightPixel = null;
+		Pixel botPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		Color rightColor = null;
+		Color botColor = null;
+		for (int row = 0; row < pixels.length - 1; row++) {
+			for (int col = 0; col < pixels[0].length - 1; col++) {
+				currentPixel = pixels[row][col];
+				rightPixel = pixels[row][col + 1];
+				botPixel = pixels[row + 1][col];
+				rightColor = rightPixel.getColor();
+				botColor = botPixel.getColor();
+				if (currentPixel.colorDistance(rightColor) > edgeDist ||
+					currentPixel.colorDistance(botColor) > edgeDist)	{
+					currentPixel.setColor(Color.BLACK);
+				} else {
+					currentPixel.setColor(Color.WHITE);
+				}
+			}
+		}
 	}
 } // this } is the end of class Picture, put all new methods before this
